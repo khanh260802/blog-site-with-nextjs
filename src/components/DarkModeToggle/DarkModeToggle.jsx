@@ -8,7 +8,7 @@ const DarkModeToggle = () => {
         <div className={styles.icon}>🌙</div>
         <div className={styles.icon}>🔅</div>
         <div className={styles.ball} 
-        style={mode==='dark' ? {transform: "translateX(3px)"} : {transform: "translateX(22px)"}}/>
+        style={mode==='dark' ? {transform: "translateX(2px)"} : {transform: "translateX(22px)"}}/>
     </div>
   )
 }
