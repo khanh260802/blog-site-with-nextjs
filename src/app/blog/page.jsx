@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
-import { title } from 'process'
 import Link from 'next/link'
 import axios from 'axios'
 import { notFound } from 'next/navigation'
