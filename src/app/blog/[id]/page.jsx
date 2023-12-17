@@ -4,7 +4,7 @@ import Image from 'next/image'
 import axios from 'axios'
 import { notFound } from 'next/navigation'
 const BlogPost = async ({params}) => {
-
+  
   const getPost = async () => { 
     try {
       const res = await axios(`http://localhost:3000/api/posts/${params.id}`)
