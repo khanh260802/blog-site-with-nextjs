@@ -11,9 +11,10 @@ export const metadata = {
 }
 const Blog = async () => {
 
+  const apiURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
   const getPost = async () => { 
     try {
-      const res = await axios('http://localhost:3000/api/posts'); 
+      const res = await axios(apiURL+'/posts'); 
       return res.data; 
     } catch (error) {
         notFound();
