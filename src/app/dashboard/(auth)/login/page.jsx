@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import styles from './page.module.css'
 import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -35,6 +36,25 @@ const Login = () => {
   } else {
     return (
       <div className={styles.container}>
+          <h2>Log in to your account</h2>
+
+          <button className={styles.button2} onClick={() => signIn('google')}>  
+            <Image src='/google.png' alt='google' width={20} height={20} 
+            className={styles.icon}/>
+            <span className={styles.buttonText}>Sign in with google</span>
+          </button>
+          <button className={styles.button2}>  
+            <Image src='/github.png' alt='github' width={20} height={20} 
+            className={styles.icon}/>
+            <span className={styles.buttonText}>Sign in with github</span>
+          </button>
+
+          <div className={styles.orContainer}>
+            <hr className={styles.hr} />
+            <span className={styles.buttonText}>OR</span>
+            <hr className={styles.hr}/>
+          </div>
+
           <form className={styles.form} onSubmit={handleSubmit}>
               <input
                   className={styles.input}

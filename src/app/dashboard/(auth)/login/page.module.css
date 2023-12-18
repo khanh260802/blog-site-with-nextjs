@@ -48,4 +48,30 @@
     text-decoration: underline;
     color: #53c28b;
 }
-    
+.button2 { 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    width: 300px; 
+    padding: 10px 0; 
+    border-radius: 4px;
+    justify-content: center;
+    position: relative;
+    border: none;
+}
+.icon { 
+    position: absolute; 
+    left: 16px; 
+}
+.buttonText { 
+    font-size: 16px; 
+    margin: 0 10px;
+}
+.orContainer { 
+    display: flex; 
+    align-items: center; 
+    width: 300px; 
+}
+.hr { 
+    flex-grow: 1;
+}
