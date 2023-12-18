@@ -5,6 +5,7 @@ import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
 const Dashboard = () => {
   const session =  useSession();
+  console.log(session);
   const route = useRouter(); 
   if(session.status==='loading') {
     return (
@@ -15,13 +16,13 @@ const Dashboard = () => {
   }
   else if( session.status === 'unauthenticated') {
     route?.push('/dashboard/login')
-  } else {
-    return (
-      <div>
-        Dashboard
-      </div>
-    )
-  }
+  } 
+  return (
+    <div>
+      Dashboard
+    </div>
+  )
+  
 
 }
 

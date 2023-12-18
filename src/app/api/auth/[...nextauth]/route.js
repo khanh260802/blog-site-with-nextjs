@@ -2,6 +2,7 @@ import User from "@/models/User";
 import connect from "@/utils/db";
 import NextAuth from "next-auth"
 import GoogleProvider from 'next-auth/providers/google';
+import GithubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcrypt'
 const handle = NextAuth({
@@ -31,6 +32,10 @@ const handle = NextAuth({
           throw new Error(error)      
         }
       }
+    }), 
+    GithubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     })
   ],
   pages: {

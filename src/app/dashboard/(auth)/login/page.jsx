@@ -5,24 +5,18 @@ import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
   const session  = useSession(); 
   const route = useRouter(); 
+
   const handleSubmit = async (e) => { 
     e.preventDefault();
-    setPending(true);
-    try {
-        signIn("credentials", {email, password})
-        setPending(false)
-    } catch (error) {
-        setPending(false)
-        setError(true)
-    }
+    signIn("credentials", {email, password})
   }
 
   if(session.status==='loading') {
@@ -32,6 +26,13 @@ const Login = () => {
         </div>
     )
   } else if (session.status==='authenticated') {
+    axios.post('/api/auth/register', {
+      username:session.data.user.name,
+      email:session.data.user.email,
+      password: session.data.user.email
+    },{headers: {
+      'Content-Type': 'application/json'
+    }}); 
     route.push('/dashboard');
   } else {
     return (
@@ -43,7 +44,7 @@ const Login = () => {
             className={styles.icon}/>
             <span className={styles.buttonText}>Sign in with google</span>
           </button>
-          <button className={styles.button2}>  
+          <button className={styles.button2}  onClick={() => signIn('github')}>  
             <Image src='/github.png' alt='github' width={20} height={20} 
             className={styles.icon}/>
             <span className={styles.buttonText}>Sign in with github</span>
@@ -75,7 +76,10 @@ const Login = () => {
               {error && <p className={styles.error}>Something went wrong!</p>}
               <button className={styles.button}> Login </button>
           </form>
-          <Link className={styles.link} href="/dashboard/register"> Create an account </Link>
+          <div className={styles.links}>
+            <Link className={styles.link} href="#"> Forgot your password? </Link>
+            <Link className={styles.link} href="/dashboard/register"> Create an account </Link>
+          </div>
       </div>
     )
   }
