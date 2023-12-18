@@ -17,13 +17,13 @@ const Dashboard = () => {
   else if( session.status === 'unauthenticated') {
     route?.push('/dashboard/login')
   } 
-  return (
-    <div>
-      Dashboard
-    </div>
-  )
-  
-
+  if( session.status === 'authenticated') {
+    return (
+      <div>
+        Dashboard
+      </div>
+    )
+  } 
 }
 
 export default Dashboard; 
