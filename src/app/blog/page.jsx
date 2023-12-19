@@ -13,7 +13,7 @@ const Blog = async () => {
   const apiURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
   const getPost = async () => { 
     try {
-      const res = await fetch(apiURL+'/posts', { cache: 'force-cache' }); 
+      const res = await fetch(apiURL+'/posts', { cache: 'no-store' }); 
       return res.json(); 
     } catch (error) {
         notFound();
