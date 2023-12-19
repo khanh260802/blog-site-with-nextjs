@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Loading from '@/components/loading/Loading';
 const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -32,11 +33,7 @@ const Register = () => {
     }
 
     if(pending) {
-        return (
-            <div className={styles.container}>
-                <p>loading...</p>
-            </div>
-        )
+        return <Loading/>
     }
 
     return (

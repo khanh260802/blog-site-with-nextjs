@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import axios from 'axios';
-
+import Loading from '@/components/loading/Loading';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,13 +18,9 @@ const Login = () => {
     e.preventDefault();
     signIn("credentials", {email, password})
   }
-
+  
   if(session.status==='loading') {
-    return (
-        <div className={styles.container}>
-            <p>loading...</p>
-        </div>
-    )
+    return <Loading/>
   } else if (session.status==='authenticated') {
     axios.post('/api/auth/register', {
       username:session.data.user.name,
